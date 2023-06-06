@@ -1,0 +1,7 @@
+<div (click)="onOrderChanged()" class="sortable-table-header">
+  <span class="pr-1"><ng-content></ng-content></span>
+  <span class="order-by">
+    <mat-icon class="order-icon" *ngIf="isAscOrder">expand_less</mat-icon>
+    <mat-icon class="order-icon" *ngIf="isDescOrder">expand_more</mat-icon>
+  </span>
+</div>

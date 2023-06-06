@@ -1,0 +1,56 @@
+@import '../variables';
+
+.data-table {
+  clear: both;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+
+  td,
+  th {
+    box-sizing: content-box;
+  }
+
+  .data-regular-container {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .data-min-container {
+    width: fit-content;
+    text-align: center;
+  }
+
+  tbody {
+    .table-row {
+      border-bottom: 1px solid $primaryGreyColor;
+      &:hover {
+        background-color: $altTableWhiteRowHoverColor;
+      }
+    }
+
+    .table-row > td {
+      padding: 0.1rem 0.5rem;
+      * {
+        height: 50px;
+      }
+    }
+  }
+
+  &.alt-table-white {
+    background-color: $whiteColor;
+    thead {
+      th {
+        color: $greyColor;
+        text-transform: uppercase;
+        font-weight: 500;
+        white-space: none;
+        border: none;
+        height: 40px;
+        padding: 0 0.5rem;
+        border-bottom: 1px solid $primaryGreyColor;
+      }
+    }
+  }
+}

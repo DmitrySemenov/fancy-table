@@ -1,0 +1,19 @@
+:host {
+  width: 100%;
+}
+
+.fancy-table {
+  width: 100%;
+
+  .empty-column {
+    text-align: center;
+    padding: 5rem;
+  }
+
+  .center-column-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

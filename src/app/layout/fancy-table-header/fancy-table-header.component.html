@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-between w-100">
+  <div class="mr-4 w-100">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Filter</mat-label>
+      <input matInput placeholder="Type any value here" [(ngModel)]="filter" (ngModelChange)="onFilterChanged(filter)" />
+      <button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="filter = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <div class="mr-4">
+    <mat-form-field appearance="outline">
+      <mat-label>Columns</mat-label>
+      <mat-select multiple [ngModel]="columnsFilterSelection" (ngModelChange)="onColumnsFilterSelected($event)">
+        <mat-option *ngFor="let column of columnsFilter" [value]="column">{{ column.displayName }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-paginator
+      [pageIndex]="page - 1"
+      [length]="itemsCount"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onPageChanged($event)"
+      [className]="'paginator'"
+    >
+    </mat-paginator>
+  </div>
+</div>

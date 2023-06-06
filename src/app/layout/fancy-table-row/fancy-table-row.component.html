@@ -1,0 +1,26 @@
+<tr class="table-row fancy-table-row" *ngIf="item">
+  <td
+    *ngFor="let column of columns; trackBy: trackByColumn"
+    [class.data-regular-container]="column.typeName === 'string' || column.typeName === 'email' || column.typeName === 'array'"
+    [class.data-min-container]="column.typeName === 'boolean' || column.typeName === 'image' || column.typeName === 'number'"
+  >
+    <ng-container [ngSwitch]="column.typeName">
+      <div *ngSwitchCase="'string'" [title]="item[column.fieldName]">{{ item[column.fieldName] }}</div>
+      <div *ngSwitchCase="'boolean'">
+        <mat-icon *ngIf="item[column.fieldName] === true" class="text-success">check_circle</mat-icon>
+      </div>
+      <div *ngSwitchCase="'image'">
+        <img [src]="item[column.fieldName]" class="img-fluid" />
+      </div>
+      <div *ngSwitchCase="'number'">
+        {{ item[column.fieldName] }}
+      </div>
+      <div *ngSwitchCase="'email'" [title]="item[column.fieldName]">
+        <a href="mailto:name@{{ item[column.fieldName] }}">{{ item[column.fieldName] }}</a>
+      </div>
+      <div *ngSwitchCase="'array'">
+        {{ item[column.fieldName] | join : ", " }}
+      </div>
+    </ng-container>
+  </td>
+</tr>

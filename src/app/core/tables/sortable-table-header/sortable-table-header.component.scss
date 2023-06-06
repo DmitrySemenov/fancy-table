@@ -1,0 +1,29 @@
+@import 'src/assets/styles/variables';
+
+.sortable-table-header {
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: $blackColor;
+    .order-by {
+      .order-icon {
+        opacity: 0.5;
+        color: $blackColor;
+      }
+    }
+  }
+
+  .order-by {
+    white-space: nowrap;
+
+    .order-icon {
+      font-size: 20px;
+      width: 16px;
+      height: 16px;
+      color: $darkGreyColor;
+      cursor: pointer;
+      opacity: 0.3;
+    }
+  }
+}

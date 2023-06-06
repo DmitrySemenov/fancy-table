@@ -1,0 +1,26 @@
+<div class="fancy-container h-100 d-flex flex-column">
+  <h1 class="page-header">Fancy table</h1>
+  <app-fancy-table-header
+    [itemsCount]="dataSource.filteredItems.length"
+    [page]="dataSourceState.page"
+    [pageSize]="dataSourceState.pageSize"
+    [columnsFilter]="columnsFilter"
+    (pageChanged)="onPageChanged($event)"
+    (filterChanged)="onFilterChanged($event)"
+    (pageSizeChanged)="onPageSizeChanged($event)"
+  ></app-fancy-table-header>
+
+  <div class="flex-grow-1">
+    <div class="fancy-container-table d-flex">
+      <app-fancy-table
+        [items]="dataSource.paginatedItems"
+        [sortOrder]="dataSourceState.sortOrder"
+        [columnsFilter]="columnsFilter"
+        [isLoading]="state.isLoading"
+        [isFailed]="state.isFailed"
+        (sortOrderChanged)="onSortOrderChanged($event)"
+        (refreshData)="onTryLoad()"
+      ></app-fancy-table>
+    </div>
+  </div>
+</div>

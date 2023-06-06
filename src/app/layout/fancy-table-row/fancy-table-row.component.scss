@@ -1,0 +1,9 @@
+@import 'src/assets/styles/_variables';
+
+.fancy-table-row {
+  .img-fluid {
+    max-width: fit-content;
+    max-height: fit-content;
+    text-align: center;
+  }
+}

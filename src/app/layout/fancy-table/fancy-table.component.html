@@ -1,0 +1,51 @@
+<table mat-table class="mat-elevation-z8 fancy-table data-table alt-table-white">
+  <thead>
+    <tr>
+      <th mat-header-cell *ngFor="let column of selectedColumns; trackBy: trackByColumn">
+        <app-sortable-table-header
+          [fieldName]="column.fieldName"
+          [fieldSortOrder]="sortOrder"
+          (sortOrderChanged)="onSortOrderChanged($event)"
+        >
+          {{ column.displayName }}
+        </app-sortable-table-header>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="!isLoading && !isFailed && (items | isEmpty)">
+    <tr>
+      <td [attr.colspan]="selectedColumns.length" class="text-center text-muted empty-column">No items found</td>
+    </tr>
+  </tbody>
+
+  <tbody *ngIf="isLoading">
+    <tr>
+      <td [attr.colspan]="selectedColumns.length" class="empty-column">
+        <div class="center-column-container"><mat-spinner diameter="100"></mat-spinner></div>
+      </td>
+    </tr>
+  </tbody>
+
+  <tbody *ngIf="isFailed">
+    <tr>
+      <td [attr.colspan]="selectedColumns.length" class="text-center text-muted empty-column">
+        <ng-container>Failed to load data.</ng-container>
+        <div class="mt-2">
+          Click
+          <button mat-stroked-button class="mx-2" (click)="onTryLoad()" title="Reload">Reload</button>
+          <ng-container>to refresh the data.</ng-container>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+
+  <ng-container *ngIf="!isFailed && !isLoading">
+    <tbody
+      app-fancy-table-row
+      *ngFor="let item of items; let i = index; trackBy: trackByItem"
+      [item]="item"
+      [columns]="selectedColumns"
+    ></tbody>
+  </ng-container>
+</table>

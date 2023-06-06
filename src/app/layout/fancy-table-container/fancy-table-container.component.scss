@@ -1,0 +1,14 @@
+@import 'src/assets/styles/variables';
+
+.fancy-container {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  .fancy-container-table {
+    margin-top: 6px;
+    background-color: $whiteColor;
+    min-height: 528px;
+  }
+}
